@@ -1,0 +1,9 @@
+2024-10-29 18:19:51,539 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000 [in C:\Users\joh_l\pythonESIC\Claire\.venv\Lib\site-packages\werkzeug\_internal.py:97]
+2024-10-29 18:19:51,540 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\joh_l\pythonESIC\Claire\.venv\Lib\site-packages\werkzeug\_internal.py:97]
+2024-10-29 18:29:40,766 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000 [in C:\Users\joh_l\pythonESIC\Claire\.venv\Lib\site-packages\werkzeug\_internal.py:97]
+2024-10-29 18:29:40,767 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\joh_l\pythonESIC\Claire\.venv\Lib\site-packages\werkzeug\_internal.py:97]
+2024-10-29 18:29:53,217 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000 [in C:\Users\joh_l\pythonESIC\Claire\.venv\Lib\site-packages\werkzeug\_internal.py:97]
+2024-10-29 18:29:53,217 INFO: [33mPress CTRL+C to quit[0m [in C:\Users\joh_l\pythonESIC\Claire\.venv\Lib\site-packages\werkzeug\_internal.py:97]

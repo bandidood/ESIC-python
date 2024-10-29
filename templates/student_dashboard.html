@@ -1,0 +1,31 @@
+<!-- templates/student_dashboard.html -->
+{% extends "base.html" %}
+{% block content %}
+<div class="space-y-6">
+    <h2 class="text-2xl font-bold">Tableau de bord étudiant</h2>
+
+    <div class="bg-white p-6 rounded shadow">
+        <h3 class="text-xl font-semibold mb-4">Mes notes</h3>
+        <div class="overflow-x-auto">
+            <table class="min-w-full table-auto">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Cours</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Note</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Commentaires</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    {% for note in notes %}
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ note.course_title }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ note.grade }}/20</td>
+                        <td class="px-6 py-4">{{ note.comments }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,92 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Système de Gestion Scolaire{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <!-- Logo et titre -->
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="{{ url_for('index') }}" class="text-white text-xl font-bold">
+                            École
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Menu de navigation -->
+                {% if session.get('user_id') %}
+                <div class="flex items-center space-x-4">
+                    <a href="{{ url_for('dashboard') }}"
+                       class="text-gray-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Tableau de bord
+                    </a>
+
+                    <!-- Informations utilisateur et déconnexion -->
+                    <div class="flex items-center space-x-4">
+                        <div class="text-white">
+                            <span class="font-medium">{{ session.get('username', '') }}</span>
+                            <span class="text-gray-300 text-xs">({{ session.get('role', '') }})</span>
+                        </div>
+
+                        {% if session.get('role') == 'directeur' %}
+                        <a href="{{ url_for('register') }}"
+                           class="text-gray-100 hover:text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">
+                            Créer utilisateur
+                        </a>
+                        {% endif %}
+
+                        <a href="{{ url_for('logout') }}"
+                           class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium">
+                            Déconnexion
+                        </a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="flex items-center">
+                    <a href="{{ url_for('login') }}"
+                       class="text-gray-100 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Connexion
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Indication du rôle (bande colorée) -->
+        {% if session.get('role') %}
+        <div class="h-1 w-full
+            {% if session.get('role') == 'directeur' %}bg-purple-500
+            {% elif session.get('role') == 'enseignant' %}bg-green-500
+            {% else %}bg-yellow-500{% endif %}">
+        </div>
+        {% endif %}
+    </nav>
+
+    <!-- Messages flash -->
+    <div class="max-w-7xl mx-auto px-4 mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="rounded-md p-4 mb-4
+                        {% if category == 'error' %}bg-red-100 text-red-700 border border-red-400
+                        {% else %}bg-green-100 text-green-700 border border-green-400{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Contenu principal -->
+    <main class="max-w-7xl mx-auto px-4 py-6">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
